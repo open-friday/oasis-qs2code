@@ -8,7 +8,11 @@ Commands:
 node --check src/index.js
 node --check src/fmt.js
 node --check src/check.js
+node --check src/slug.js
+node --check src/title.js
+node --check src/truncate.js
 node --test tests/smoke/integration.test.mjs
+node --experimental-test-coverage --test tests/smoke/integration.test.mjs
 ```
 
 Result:
@@ -23,4 +27,6 @@ ok 1 - the integrated public helpers work together through ESM imports
 ```
 
 The smoke test exercises the repository's real ESM imports and verifies `greet`,
-`fmt`, and `check`, including the `null` and `undefined` rejection boundary.
+`fmt`, `check`, `slugify`, `titleCase`, and `truncate`. It includes the
+`null`/`undefined` rejection boundary for `check`, exact-length and truncation
+paths for `truncate`, and string-coercion boundaries for the text helpers.
